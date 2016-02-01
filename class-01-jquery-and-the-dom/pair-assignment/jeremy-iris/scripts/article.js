@@ -1,9 +1,23 @@
 var articles = [];
 
 function Article (opts) {
-  // TODO: Use the js object passed in to complete this contructor function:
+  // DONE: Use the js object passed in to complete this contructor function:
   // Save ALL the properties of `opts` into `this`.
+
+  // Sample blog article from "blogArticles.js"
+  // title:       'Bacon Ipsum',
+  // category:    'food',
+  // author:      'Kevin Bacon',
+  // authorUrl:   'http://www.imdb.com/name/nm0000102/',
+  // publishedOn: '2015-11-05',
+  // body:
+
+  this.title = opts.title;
+  this.category = opts.category;
   this.author = opts.author;
+  this.authorUrl = opts.authorUrl
+  this.publishedOn = opts.publishedOn
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
