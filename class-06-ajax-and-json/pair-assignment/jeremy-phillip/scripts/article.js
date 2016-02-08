@@ -38,8 +38,8 @@ Article.loadAll = function(rawData) {
 
   rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
-  })
-}
+  });
+};
 
 // This function will retrieve the data from either a local or remote source,
 // and process it, then hand off control to the View.
@@ -48,7 +48,31 @@ Article.fetchAll = function() {
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(//TODO: What do we pass in here to the .loadAll function?
+    $.ajax({
+      type: 'HEAD',
+      url: 'data/hackerIpsum.js',
+      success: function(data, message, xhr) {
+        console.log(xhr);
+
+        var eTag = xhr.getResponseHeader('eTag');
+
+        if (!localStorage.eTag || eTag !== localStorage.eTag) {
+          localStorage.eTag = eTag;
+        } else {
+          article.loadAll(JSON.parse(localStorage.rawData));
+
+          // call the method that will render our index components
+          // see file:
+        }
+
+
+      }
+    });
+
+
+    Article.loadAll(
+      //TODO: What do we pass in here to the .loadAll function?
+
     );
     articleView.someFunctionToCall; //TODO: What method do we call to render the index page?
   } else {
@@ -58,5 +82,12 @@ Article.fetchAll = function() {
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
 
+    $.getJSON('url', function(rawData) {
+      // stuff to handle after response
+      // load all your data
+      // setup local storage to contain data
+      // initialize the index page (render the content)
+      
+    });
   }
-}
+};
