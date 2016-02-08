@@ -48,46 +48,45 @@ Article.fetchAll = function() {
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
+
     $.ajax({
       type: 'HEAD',
-      url: 'data/hackerIpsum.js',
+      url: 'data/hackerIpsum.json',
       success: function(data, message, xhr) {
         console.log(xhr);
 
+        // if the data needs to be updated...
         var eTag = xhr.getResponseHeader('eTag');
-
         if (!localStorage.eTag || eTag !== localStorage.eTag) {
           localStorage.eTag = eTag;
         } else {
-          article.loadAll(JSON.parse(localStorage.rawData));
-
+          Article.loadAll(JSON.parse(localStorage.rawData));
           // call the method that will render our index components
-          // see file:
         }
-
-
       }
     });
 
+    //DONE: What do we pass in here to the .loadAll function?
+    // If the data already exists...
+    Article.loadAll(JSON.parse(localStorage.rawData));
 
-    Article.loadAll(
-      //TODO: What do we pass in here to the .loadAll function?
+    //TODO: What method do we call to render the index page?
+    articleView.initIndexPage();
 
-    );
-    articleView.someFunctionToCall; //TODO: What method do we call to render the index page?
   } else {
-    // TODO: When we don't already have the rawData,
+    // DONE: When we don't already have the rawData,
     // we need to retrieve the JSON file from the server with AJAX (which jQuery method is best for this?),
     // cache it in localStorage so we can skip the server call next time,
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
 
-    $.getJSON('url', function(rawData) {
-      // stuff to handle after response
-      // load all your data
-      // setup local storage to contain data
-      // initialize the index page (render the content)
-      
+    $.getJSON('data/hackerIpsum.json', function(rawJSON){
+      console.log(rawJSON);
+
+      localStorage.rawData = rawJSON;
+      Article.loadAll(JSON.parse(localStorage.rawData));
+      articleView.initIndexPage();
+
     });
   }
 };
