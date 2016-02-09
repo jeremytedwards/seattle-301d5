@@ -70,7 +70,7 @@ Article.fetchAll = function() {
     // If the data already exists...
     Article.loadAll(JSON.parse(localStorage.rawData));
 
-    //TODO: What method do we call to render the index page?
+    //DONE: What method do we call to render the index page?
     articleView.initIndexPage();
 
   } else {
