@@ -80,7 +80,7 @@ Article.fetchAll = function() {
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
 
-    $.getJSON('data/hackerIpsum.json', function(rawJSON){
+    $.getJSON('data/hackerIpsum.json').done(function(rawJSON){
       console.log(rawJSON);
 
       localStorage.rawData = JSON.stringify(rawJSON);
