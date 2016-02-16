@@ -10,12 +10,13 @@
     $about.show().siblings().hide();
   };
 
-  // TODO: How do you want to render a single repo as html? Return your filled in HTML template.
+  // DONE: How do you want to render a single repo as html? Return your filled in HTML template.
   // This is a function that is created for local access only. Helper Funtcion.
   var render = function(repo) {
+    console.log('Calling: render');
     // For each item in the repo generate the html that will get appended to the
     // list on the page. Called from .append.map() below
-    console.log("Calling: render");
+
     return $('<li>')
       .html('repo name: <a href="' + repo.html_url + '">' + repo.full_name + '</a>');
   };
