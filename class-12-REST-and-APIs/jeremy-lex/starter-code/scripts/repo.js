@@ -17,6 +17,7 @@
       headers: { 'Authorization': 'token ' + githubToken },
       success: function(repoData, message, xhr) {
         console.log('Processing each Repo' + repoData);
+        // repos.all = repoData;
         repos.all = $.map(repoData, function(el) {
           return el;
         });
