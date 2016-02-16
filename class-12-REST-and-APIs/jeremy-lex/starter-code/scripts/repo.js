@@ -5,9 +5,20 @@
 
   repos.requestRepos = function(callback) {
     // TODO: How would you like to fetch your repos? Don't forget to call the callback.
-    $.ajax({
+    console.log('gitAJAX: ' + $gitTokenAJAX);
+    $.ajax($gitTokenAJAX).done(callback);
 
-    }).done(callback)
+    // var $gitTokenAJAX = {
+    //   url: 'https://api.github.com/users/jeremytedwards/repos?per_page=5&sort=updated',
+    //   type: 'GET',
+    //   headers: { 'Authorization': 'token ' + githubToken },
+    //   success: function(repoData, message, xhr) {
+    //     console.log('Processing each Repo' + repoData);
+    //     repoData.forEach( function(xhr) {
+    //       repos.with(xhr);
+    //     });
+    //   } // end of success function
+    // };//end of gitTokenAJAX object
 
   };
 

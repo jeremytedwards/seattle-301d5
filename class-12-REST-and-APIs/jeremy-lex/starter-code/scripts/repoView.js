@@ -15,7 +15,10 @@
   var render = function(repo) {
     // For each item in the repo generate the html that will get appended to the
     // list on the page. Called from .append.map() below
-    $('<li>').html();
+
+    console.log("Calling: render");
+    // $('<li>').html();
+
   };
 
   // DONE: If all the data is loaded, we can prep the UI and render the repos.
