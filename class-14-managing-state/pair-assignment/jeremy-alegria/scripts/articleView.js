@@ -154,7 +154,7 @@
 
     articleView.populateFilters();
 
-    // COMMENT: What does this method do?  What is it's execution path?
+    // COMMENT-DONE: What does this method do?  What is it's execution path?
     /*
     *  The following method, defined above, calls a route to filter the articles
     *  on the page based on a selection.
@@ -164,7 +164,7 @@
     */
     articleView.handleFilters();
 
-    // DONE: Replace setTeasers with just the truncation logic, if needed:
+    // COMMENT-DONE: Replace setTeasers with just the truncation logic, if needed:
     if ($('#articles article').length > 1) {
       $('.article-body *:nth-of-type(n+2)').hide();
     }
